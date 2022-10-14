@@ -14,8 +14,6 @@ const server = http.createServer((req, res) => {
       const contact = fs.readFileSync("pages/contact.html", "utf-8");
       res.end(contact);
       break;
-    default:
-      res.end("Not Found...");
   }
 });
 server.listen(process.env.PORT || 5000, () => {
