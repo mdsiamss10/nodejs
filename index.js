@@ -1,21 +1,7 @@
-const fs = require("fs");
-const http = require("http");
-const server = http.createServer((req, res) => {
-  switch (req.url) {
-    case "/":
-      const home = fs.readFileSync("pages/index.html", "utf-8");
-      res.end(home);
-      break;
-    case "/about":
-      const about = fs.readFileSync("pages/about.html", "utf-8");
-      res.end(about);
-      break;
-    case "/contact":
-      const contact = fs.readFileSync("pages/contact.html", "utf-8");
-      res.end(contact);
-      break;
-  }
-});
-server.listen(process.env.PORT || 5000, () => {
-  console.log("Server is running.");
+const app = require("express")();
+const port = 5050 || process.env.PORT;
+const userRouter = require("./routes/user.route");
+app.use(userRouter)
+app.listen(port, ()=>{
+   console.log("Server is running successfully.")
 });
